@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[boltdb.md]]></title>
+    <url>%2F2017%2F02%2F07%2Fboltdb%2F</url>
+    <content type="text"><![CDATA[关于Golang 对boltdb的使用]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Go</tag>
+      </tags>
+  </entry>
+</search>
