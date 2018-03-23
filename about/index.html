@@ -351,7 +351,39 @@
           
 <div class="comments" id="comments">
 
-<div id="uyan_frame"></div>
+<div onclick="showGitment()" id="gitment_title" class="gitment_title">显示 Gitment 评论</div>
+<div id="container" style="display:none"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+const myTheme = {
+    render(state, instance) {
+        const container = document.createElement('div');
+        container.lang = "en-US";
+        container.className = 'gitment-container gitment-root-container';
+        container.appendChild(instance.renderHeader(state, instance));
+        container.appendChild(instance.renderEditor(state, instance));
+        container.appendChild(instance.renderComments(state, instance));
+        container.appendChild(instance.renderFooter(state, instance));
+        return container;
+    }
+}
+function showGitment() {
+    $("#gitment_title").attr("style", "display:none");
+    $("#container").attr("style", "").addClass("gitment_container");
+    var gitment = new Gitment({
+id: window.location.pathname,
+theme: myTheme,
+owner: 'muyuefei',
+repo: 'gitment-comments',
+oauth: {
+client_id: 'e47330b158a546378118',
+client_secret: 'd69525e281f2e2af45eacdf7ee8b201277abc0dc'
+}
+});
+gitment.render('container');
+}
+</script>
 
       
   </div>
@@ -604,14 +636,6 @@
 
 
   
-    
-
-    
-      <!-- UY BEGIN -->
-      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2148341"></script>
-      <!-- UY END -->
-    
-  
 
 
 
@@ -649,14 +673,6 @@
 
 
 
-  
-    
-
-    
-      <!-- UY BEGIN -->
-      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2148341"></script>
-      <!-- UY END -->
-    
   
 
 
