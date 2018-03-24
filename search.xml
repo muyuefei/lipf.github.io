@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[boltdb.md]]></title>
-    <url>%2F2017%2F02%2F07%2Fboltdb%2F</url>
-    <content type="text"><![CDATA[关于Golang 对boltdb的使用]]></content>
+    <title><![CDATA[就这样开始吧～]]></title>
+    <url>%2F2013%2F02%2F13%2Fstart-md%2F</url>
+    <content type="text"><![CDATA[有一个老板跟员工出去吃饭，路上见一辆最新款的布加迪威龙跑车。员工们纷纷议论，这时老板笑着说：“不要羡慕，要相信自己。我相信，只要大家肯努力，明年我就可以买一辆了。“ 😄]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Golang 对boltdb的使用]]></title>
+    <url>%2F2013%2F02%2F07%2Fboltdb%2F</url>
+    <content type="text"></content>
       <categories>
         <category>技术</category>
       </categories>
