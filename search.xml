@@ -8,15 +8,4 @@
         <category>生活</category>
       </categories>
   </entry>
-  <entry>
-    <title><![CDATA[Golang 对boltdb的使用]]></title>
-    <url>%2F2013%2F02%2F07%2Fboltdb%2F</url>
-    <content type="text"></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Go</tag>
-      </tags>
-  </entry>
 </search>
