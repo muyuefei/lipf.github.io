@@ -115,14 +115,14 @@
 <meta name="description" content="风来竹疏，风过竹不留声；雁渡寒潭，雁去潭不留影；事来了，则本心应对；事去了，心随安。">
 <meta name="keywords" content="感悟">
 <meta property="og:type" content="article">
-<meta property="og:title" content="每日一禅">
+<meta property="og:title" content="every day ">
 <meta property="og:url" content="http://muyuefei.github.io/2018/03/27/每日一禅-至人用心若镜/index.html">
 <meta property="og:site_name" content="天道酬勤">
 <meta property="og:description" content="风来竹疏，风过竹不留声；雁渡寒潭，雁去潭不留影；事来了，则本心应对；事去了，心随安。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-04T02:10:09.018Z">
+<meta property="og:updated_time" content="2018-04-04T09:38:59.796Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="每日一禅">
+<meta name="twitter:title" content="every day ">
 <meta name="twitter:description" content="风来竹疏，风过竹不留声；雁渡寒潭，雁去潭不留影；事来了，则本心应对；事去了，心随安。">
 
 
@@ -158,7 +158,7 @@
 
 
 
-  <title>每日一禅 | 天道酬勤</title>
+  <title>every day  | 天道酬勤</title>
   
 
 
@@ -362,7 +362,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">每日一禅</h1>
+          <h1 class="post-title" itemprop="name headline">every day </h1>
         
 
         <div class="post-meta">
@@ -858,51 +858,6 @@ gitment.render('container');
 
 
 
-{ %
-    if theme.gitment.enable %
-} { % set owner = theme.gitment.owner %
-} { % set repo = theme.gitment.repo %
-} { % set cid = theme.gitment.client_id %
-} { % set cs = theme.gitment.client_secret %
-} <
-link rel = "stylesheet"
-href = "https://imsun.github.io/gitment/style/default.css" >
-    <
-    script src = "https://imsun.github.io/gitment/dist/gitment.browser.js" > < /script> { %
-        if not theme.gitment.lazy %
-    } <
-    script type = "text/javascript" >
-    var gitment = new Gitment({
-        id: window.location.pathname,
-        owner: '',
-        repo: '',
-        oauth: {
-            client_id: '',
-            client_secret: '',
-        }
-    });
-gitment.render('gitment-container'); <
-/script> { %
-    else %
-} <
-script type = "text/javascript" >
-    function ShowGitment() {
-        document.getElementById("gitment-display-button").style.display = "none";
-        document.getElementById("gitment-container").style.display = "block";
-        var gitment = new Gitment({
-            id: document.location.href,
-            owner: '',
-            repo: '',
-            oauth: {
-                client_id: '',
-                client_secret: '',
-            }
-        });
-        gitment.render('gitment-container');
-    } <
-    /script> { % endif %
-    } { % endif %
-    }
 
 
   

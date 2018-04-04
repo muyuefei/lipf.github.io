@@ -511,8 +511,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/27/每日一禅-至人用心若镜/" rel="next" title="每日一禅">
-                <i class="fa fa-chevron-left"></i> 每日一禅
+              <a href="/2018/03/27/每日一禅-至人用心若镜/" rel="next" title="every day ">
+                <i class="fa fa-chevron-left"></i> every day 
               </a>
             
           </div>
@@ -861,51 +861,6 @@ gitment.render('container');
 
 
 
-{ %
-    if theme.gitment.enable %
-} { % set owner = theme.gitment.owner %
-} { % set repo = theme.gitment.repo %
-} { % set cid = theme.gitment.client_id %
-} { % set cs = theme.gitment.client_secret %
-} <
-link rel = "stylesheet"
-href = "https://imsun.github.io/gitment/style/default.css" >
-    <
-    script src = "https://imsun.github.io/gitment/dist/gitment.browser.js" > < /script> { %
-        if not theme.gitment.lazy %
-    } <
-    script type = "text/javascript" >
-    var gitment = new Gitment({
-        id: window.location.pathname,
-        owner: '',
-        repo: '',
-        oauth: {
-            client_id: '',
-            client_secret: '',
-        }
-    });
-gitment.render('gitment-container'); <
-/script> { %
-    else %
-} <
-script type = "text/javascript" >
-    function ShowGitment() {
-        document.getElementById("gitment-display-button").style.display = "none";
-        document.getElementById("gitment-container").style.display = "block";
-        var gitment = new Gitment({
-            id: document.location.href,
-            owner: '',
-            repo: '',
-            oauth: {
-                client_id: '',
-                client_secret: '',
-            }
-        });
-        gitment.render('gitment-container');
-    } <
-    /script> { % endif %
-    } { % endif %
-    }
 
 
   
