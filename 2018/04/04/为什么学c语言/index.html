@@ -836,6 +836,21 @@ gitment.render('container');
 
 
 
+< script >
+    const gitment = new Gitment({
+        id: decodeURI(window.location.pathname),
+        owner: "muyuefei",
+        repo: 'gitment-comments',
+        oauth: {
+            client_id: 'e47330b158a546378118',
+            client_secret: 'd69525e281f2e2af45eacdf7ee8b201277abc0dc',
+        },
+        // ...
+        // For more available options, check out the documentation below
+    })
+
+    gitment.render('comments') 
+</script>
 
 
   
