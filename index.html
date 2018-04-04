@@ -1412,20 +1412,20 @@
 
 
 
-< script >
-    const gitment = new Gitment({
-        id: decodeURI(window.location.pathname),
-        owner: "muyuefei",
+<div id="container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+        id: '', 
+        owner: 'muyuefei',
         repo: 'gitment-comments',
         oauth: {
-            client_id: 'e47330b158a546378118',
-            client_secret: 'd69525e281f2e2af45eacdf7ee8b201277abc0dc',
-        },
-        // ...
-        // For more available options, check out the documentation below
-    })
-
-    gitment.render('comments') 
+        client_id: 'theme.gitment.client_id}}',
+        client_secret: 'd69525e281f2e2af45eacdf7ee8b201277abc0dc',
+    },
+})
+gitment.render('container')
 </script>
 
 
