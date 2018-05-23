@@ -1050,7 +1050,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/02/24/1521873871192/" itemprop="url">python 开发环境</a></h1>
+                <a class="post-title-link" href="/2017/02/24/1521873871192/" itemprop="url">python</a></h1>
         
 
         <div class="post-meta">
@@ -1116,7 +1116,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  148
+                  192
                 </span>
               
 
@@ -1175,6 +1175,18 @@ Although never is often better than *right* now.
 If the implementation is hard to explain, it&apos;s a bad idea.
 If the implementation is easy to explain, it may be a good idea.
 Namespaces are one honking great idea -- let&apos;s do more of those!
+</code></pre><h6 id="以快速排序实现为开端"><a href="#以快速排序实现为开端" class="headerlink" title="以快速排序实现为开端"></a><em>以快速排序实现为开端</em></h6><pre><code>def quicksort(array):
+    less = []
+    greater =[]
+    if len(array) &lt;= 1:
+        return array
+    pivot = array.pop()
+    for x in array:
+        if x &lt;= pivot:
+            less.append(x)
+        else:
+            greater.append(x)
+    return quicksort(less) + [pivot] + quicksort(greater)
 </code></pre>
           
         
