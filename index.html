@@ -345,6 +345,222 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://muyuefei.github.io/2019/02/28/1551344771062/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lipengfei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/lufei.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天道酬勤">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/28/1551344771062/" itemprop="url">nas 存储搭建（nfs）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-28T17:06:22+08:00">
+                2019-02-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  277
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="centos-搭建nfs"><a href="#centos-搭建nfs" class="headerlink" title="centos 搭建nfs"></a>centos 搭建nfs</h3><hr>
+<p><strong>场景</strong>：在k8s上搭建一套jenkins，jenkins数据需要做持久化。</p>
+<p><strong>k8s节点</strong>： centos 7.4+</p>
+<p><strong>前提条件</strong>: nfs服务器必须要与k8s网络互通</p>
+<p><strong>搭建过程：</strong></p>
+<ol>
+<li><p>服务端</p>
+<ul>
+<li><p>安装<br><br><code>yum install -y nfs-utils</code></p>
+</li>
+<li><p>配置 </p>
+<ul>
+<li>设置nfs开机启动 <br><pre><code>systemctl enable rpcbind
+systemctl enable nfs
+</code></pre></li>
+<li>启动nfs<pre><code>systemctl start rpcbind 
+systemctl start nfs
+</code></pre></li>
+<li>如果防火墙开启<pre><code>firewall-cmd --zone=public --permanent --add-service=rpc-bind
+firewall-cmd --zone=public --permanent --add-service=mountd
+firewall-cmd --zone=public --permanent --add-service=nfs
+firewall-cmd --reload
+</code></pre></li>
+</ul>
+</li>
+<li><p>配置共享目录</p>
+<ul>
+<li><p>创建</p>
+<pre><code>mkdir -m 755 -p 共享目录
+</code></pre></li>
+<li><p>配置</p>
+<pre><code>vim /etc/exports
+添加如下配置：
+共享目录 客户端地址(rw,sync,no_root_squash,no_all_squash)
+保存后重启nfs
+</code></pre></li>
+<li><p>检查本地共项目录</p>
+<pre><code>showmount -e localhost
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<p>2.客户端</p>
+<ul>
+<li><p>安装<br><br><code>yum install -y nfs-utils</code></p>
+</li>
+<li><p>rpcbind </p>
+<ul>
+<li>开机启动<pre><code>systemctl enable rpcbind
+</code></pre></li>
+<li>启动服务<pre><code>systemctl start rpcbind
+</code></pre></li>
+</ul>
+</li>
+<li><p>连接服务端</p>
+<pre><code>mkdir 挂载目标目录
+mount -t nfs 服务端地址：共享目录 本地挂载目标目录
+</code></pre></li>
+<li>客户端自动挂载<pre><code>vim /etc/fstab
+结尾添加
+nas服务端地址：共享目录 本地挂载目录 nas协议(nfs) defaults  0  0
+重新加载systemctl: systemctl daemon-reload
+</code></pre></li>
+</ul>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://muyuefei.github.io/2018/04/04/1522836738401/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1018,210 +1234,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://muyuefei.github.io/2017/02/24/1521873871192/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lipengfei">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/lufei.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="天道酬勤">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/02/24/1521873871192/" itemprop="url">python</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-24T14:44:00+08:00">
-                2017-02-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  192
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a><strong>Python</strong></h3><hr>
-<h4 id="the-Zen-of-Python-by-Tim-Peters"><a href="#the-Zen-of-Python-by-Tim-Peters" class="headerlink" title="the Zen of Python, by Tim Peters"></a>the Zen of Python, by Tim Peters</h4><pre><code>Beautiful is better than ugly.
-Explicit is better than implicit.
-Simple is better than complex.
-Complex is better than complicated.
-Flat is better than nested.
-Sparse is better than dense.
-Readability counts.
-Special cases aren&apos;t special enough to break the rules.
-Although practicality beats purity.
-Errors should never pass silently.
-Unless explicitly silenced.
-In the face of ambiguity, refuse the temptation to guess.
-There should be one-- and preferably only one --obvious way to do it.
-Although that way may not be obvious at first unless you&apos;re Dutch.
-Now is better than never.
-Although never is often better than *right* now.
-If the implementation is hard to explain, it&apos;s a bad idea.
-If the implementation is easy to explain, it may be a good idea.
-Namespaces are one honking great idea -- let&apos;s do more of those!
-</code></pre><h6 id="以快速排序实现为开端"><a href="#以快速排序实现为开端" class="headerlink" title="以快速排序实现为开端"></a><em>以快速排序实现为开端</em></h6><pre><code>def quicksort(array):
-    less = []
-    greater =[]
-    if len(array) &lt;= 1:
-        return array
-    pivot = array.pop()
-    for x in array:
-        if x &lt;= pivot:
-            less.append(x)
-        else:
-            greater.append(x)
-    return quicksort(less) + [pivot] + quicksort(greater)
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1274,7 +1286,7 @@ Namespaces are one honking great idea -- let&apos;s do more of those!
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1368,7 +1380,7 @@ Namespaces are one honking great idea -- let&apos;s do more of those!
         <div class="copyright" >
   
   &copy;  2017 - 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-optin-monster"></i>
   </span>

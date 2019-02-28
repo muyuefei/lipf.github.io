@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[nas 存储搭建（nfs）]]></title>
+    <url>%2F2019%2F02%2F28%2F1551344771062%2F</url>
+    <content type="text"><![CDATA[centos 搭建nfs 场景：在k8s上搭建一套jenkins，jenkins数据需要做持久化。 k8s节点： centos 7.4+ 前提条件: nfs服务器必须要与k8s网络互通 搭建过程： 服务端 安装yum install -y nfs-utils 配置 设置nfs开机启动 systemctl enable rpcbind systemctl enable nfs 启动nfssystemctl start rpcbind systemctl start nfs 如果防火墙开启firewall-cmd --zone=public --permanent --add-service=rpc-bind firewall-cmd --zone=public --permanent --add-service=mountd firewall-cmd --zone=public --permanent --add-service=nfs firewall-cmd --reload 配置共享目录 创建 mkdir -m 755 -p 共享目录 配置 vim /etc/exports 添加如下配置： 共享目录 客户端地址(rw,sync,no_root_squash,no_all_squash) 保存后重启nfs 检查本地共项目录 showmount -e localhost 2.客户端 安装yum install -y nfs-utils rpcbind 开机启动systemctl enable rpcbind 启动服务systemctl start rpcbind 连接服务端 mkdir 挂载目标目录 mount -t nfs 服务端地址：共享目录 本地挂载目标目录 客户端自动挂载vim /etc/fstab 结尾添加 nas服务端地址：共享目录 本地挂载目录 nas协议(nfs) defaults 0 0 重新加载systemctl: systemctl daemon-reload]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[gitment的坑]]></title>
     <url>%2F2018%2F04%2F04%2F1522836738401%2F</url>
     <content type="text"><![CDATA[gitment 初始化评论的时候总是报Error: Validation Failed &emsp;&emsp;导致这个问题产生的原因是因为在调用issue api 时，请求数据中对我的文章中文标题（utf-8)超过了50个字符导致的。&emsp;&emsp;注意：issue的标签label有长度限制！label的最大长度限制是50个字符。 &emsp;&emsp; 解决方案：在外层的_config.yml 里把permalink: :year/:month/:day/:title/ 改成:year/:month/:day/:id/]]></content>
@@ -51,7 +56,7 @@
   </entry>
   <entry>
     <title><![CDATA[就这样开始吧～]]></title>
-    <url>%2F2017%2F02%2F13%2Fcjhj73qx70008vqfyx5ydw2o9%2F</url>
+    <url>%2F2017%2F02%2F13%2Fcjsoeg91d0006yd5rkpgytb9v%2F</url>
     <content type="text"><![CDATA[有一个老板跟员工出去吃饭，路上见一辆最新款的布加迪威龙跑车。员工们纷纷议论，这时老板笑着说：“不要羡慕，要相信自己。我相信，只要大家肯努力，明年我就可以买一辆了。“ 😄 很喜欢的一句话：All work and no play makes Jack a dull boy; all play and no work makes Jack a mere boy!带着愉悦的心情，开始我的不一样的人生！好好活～]]></content>
       <categories>
         <category>生活</category>

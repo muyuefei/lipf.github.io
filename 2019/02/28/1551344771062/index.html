@@ -96,7 +96,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="感悟," />
+  <meta name="keywords" content="Hello, Fly" />
 
 
 
@@ -112,18 +112,17 @@
 
 
 
-<meta name="description" content="风来竹疏，风过竹不留声；雁渡寒潭，雁去潭不留影；事来了，则本心应对；事去了，心随安。">
-<meta name="keywords" content="感悟">
+<meta name="description" content="centos 搭建nfs 场景：在k8s上搭建一套jenkins，jenkins数据需要做持久化。 k8s节点： centos 7.4+ 前提条件: nfs服务器必须要与k8s网络互通 搭建过程：  服务端  安装yum install -y nfs-utils  配置   设置nfs开机启动 systemctl enable rpcbind systemctl enable nfs  启动nfs">
 <meta property="og:type" content="article">
-<meta property="og:title" content="禅">
-<meta property="og:url" content="http://muyuefei.github.io/2018/03/27/1522122352060/index.html">
+<meta property="og:title" content="nas 存储搭建（nfs）">
+<meta property="og:url" content="http://muyuefei.github.io/2019/02/28/1551344771062/index.html">
 <meta property="og:site_name" content="天道酬勤">
-<meta property="og:description" content="风来竹疏，风过竹不留声；雁渡寒潭，雁去潭不留影；事来了，则本心应对；事去了，心随安。">
+<meta property="og:description" content="centos 搭建nfs 场景：在k8s上搭建一套jenkins，jenkins数据需要做持久化。 k8s节点： centos 7.4+ 前提条件: nfs服务器必须要与k8s网络互通 搭建过程：  服务端  安装yum install -y nfs-utils  配置   设置nfs开机启动 systemctl enable rpcbind systemctl enable nfs  启动nfs">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-04T10:30:15.468Z">
+<meta property="og:updated_time" content="2019-02-28T09:57:39.418Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="禅">
-<meta name="twitter:description" content="风来竹疏，风过竹不留声；雁渡寒潭，雁去潭不留影；事来了，则本心应对；事去了，心随安。">
+<meta name="twitter:title" content="nas 存储搭建（nfs）">
+<meta name="twitter:description" content="centos 搭建nfs 场景：在k8s上搭建一套jenkins，jenkins数据需要做持久化。 k8s节点： centos 7.4+ 前提条件: nfs服务器必须要与k8s网络互通 搭建过程：  服务端  安装yum install -y nfs-utils  配置   设置nfs开机启动 systemctl enable rpcbind systemctl enable nfs  启动nfs">
 
 
 
@@ -152,13 +151,13 @@
 
 
 
-  <link rel="canonical" href="http://muyuefei.github.io/2018/03/27/1522122352060/"/>
+  <link rel="canonical" href="http://muyuefei.github.io/2019/02/28/1551344771062/"/>
 
 
 
 
 
-  <title>禅 | 天道酬勤</title>
+  <title>nas 存储搭建（nfs） | 天道酬勤</title>
   
 
 
@@ -345,7 +344,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://muyuefei.github.io/2018/03/27/1522122352060/">
+    <link itemprop="mainEntityOfPage" href="http://muyuefei.github.io/2019/02/28/1551344771062/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lipengfei">
@@ -362,7 +361,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">禅</h1>
+          <h1 class="post-title" itemprop="name headline">nas 存储搭建（nfs）</h1>
         
 
         <div class="post-meta">
@@ -374,8 +373,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-27T11:46:00+08:00">
-                2018-03-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-28T17:06:22+08:00">
+                2019-02-28
               </time>
             
 
@@ -384,28 +383,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/禅/" itemprop="url" rel="index">
-                    <span itemprop="name">禅</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -428,7 +405,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  34
+                  277
                 </span>
               
 
@@ -465,7 +442,72 @@
       
 
       
-        <p>风来竹疏，风过竹不留声；<br>雁渡寒潭，雁去潭不留影；<br>事来了，则本心应对；<br>事去了，心随安。</p>
+        <h3 id="centos-搭建nfs"><a href="#centos-搭建nfs" class="headerlink" title="centos 搭建nfs"></a>centos 搭建nfs</h3><hr>
+<p><strong>场景</strong>：在k8s上搭建一套jenkins，jenkins数据需要做持久化。</p>
+<p><strong>k8s节点</strong>： centos 7.4+</p>
+<p><strong>前提条件</strong>: nfs服务器必须要与k8s网络互通</p>
+<p><strong>搭建过程：</strong></p>
+<ol>
+<li><p>服务端</p>
+<ul>
+<li><p>安装<br><br><code>yum install -y nfs-utils</code></p>
+</li>
+<li><p>配置 </p>
+<ul>
+<li>设置nfs开机启动 <br><pre><code>systemctl enable rpcbind
+systemctl enable nfs
+</code></pre></li>
+<li>启动nfs<pre><code>systemctl start rpcbind 
+systemctl start nfs
+</code></pre></li>
+<li>如果防火墙开启<pre><code>firewall-cmd --zone=public --permanent --add-service=rpc-bind
+firewall-cmd --zone=public --permanent --add-service=mountd
+firewall-cmd --zone=public --permanent --add-service=nfs
+firewall-cmd --reload
+</code></pre></li>
+</ul>
+</li>
+<li><p>配置共享目录</p>
+<ul>
+<li><p>创建</p>
+<pre><code>mkdir -m 755 -p 共享目录
+</code></pre></li>
+<li><p>配置</p>
+<pre><code>vim /etc/exports
+添加如下配置：
+共享目录 客户端地址(rw,sync,no_root_squash,no_all_squash)
+保存后重启nfs
+</code></pre></li>
+<li><p>检查本地共项目录</p>
+<pre><code>showmount -e localhost
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<p>2.客户端</p>
+<ul>
+<li><p>安装<br><br><code>yum install -y nfs-utils</code></p>
+</li>
+<li><p>rpcbind </p>
+<ul>
+<li>开机启动<pre><code>systemctl enable rpcbind
+</code></pre></li>
+<li>启动服务<pre><code>systemctl start rpcbind
+</code></pre></li>
+</ul>
+</li>
+<li><p>连接服务端</p>
+<pre><code>mkdir 挂载目标目录
+mount -t nfs 服务端地址：共享目录 本地挂载目标目录
+</code></pre></li>
+<li>客户端自动挂载<pre><code>vim /etc/fstab
+结尾添加
+nas服务端地址：共享目录 本地挂载目录 nas协议(nfs) defaults  0  0
+重新加载systemctl: systemctl daemon-reload
+</code></pre></li>
+</ul>
+</li>
+</ol>
 
       
     </div>
@@ -505,12 +547,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/感悟/" rel="tag"># 感悟</a>
-          
-        </div>
-      
 
       
       
@@ -520,8 +556,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/24/1521873871192/" rel="next" title="python">
-                <i class="fa fa-chevron-left"></i> python
+              <a href="/2018/04/04/1522836738401/" rel="next" title="gitment的坑">
+                <i class="fa fa-chevron-left"></i> gitment的坑
               </a>
             
           </div>
@@ -529,10 +565,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/04/1522808233943/" rel="prev" title="一首感人至深的小诗">
-                一首感人至深的小诗 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -619,8 +651,17 @@ gitment.render('container');
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/lufei.jpg"
@@ -712,6 +753,22 @@ gitment.render('container');
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#centos-搭建nfs"><span class="nav-number">1.</span> <span class="nav-text">centos 搭建nfs</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
